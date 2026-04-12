@@ -15,11 +15,11 @@ public class OpenApiConfig {
     public OpenAPI adopcionOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Adopción de Mascotas")
+                        .title("API de reserva de salas")
                         .description("""
                                 Backend para un sistema simple de adopción de mascotas.
                                 
-                                Permite administrar **Adoptantes**, **Mascotas** y **Solicitudes** con:
+                                Permite administrar **Usuarios**, **Salas** y **Reservas** con:
                                 - Herencia JPA (`@MappedSuperclass`)
                                 - Enumeraciones (`@Enumerated`)
                                 - Auditoría automática (`@CreatedDate` / `@LastModifiedDate`)
