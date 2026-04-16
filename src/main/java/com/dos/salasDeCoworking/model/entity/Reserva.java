@@ -1,16 +1,10 @@
 package com.dos.salasDeCoworking.model.entity;
 
-import java.sql.Date;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "reservas")
@@ -22,14 +16,23 @@ import lombok.Setter;
 public class Reserva extends BaseEntity {
 
     @Column(name = "fecha", nullable = false, length = 80)
-    private Date fecha;
+    private LocalDate fecha;
 
     @Column(name = "horaInicio", nullable = false, length = 80)
-    private String horaInicio;
+    private LocalTime horaInicio;
 
     @Column(name = "horaFin", nullable = false, length = 80)
-    private String horaFin;
+    private LocalTime horaFin;
 
-    @Column(name = "totalAPagar", nullable = false)
-    private Double totalAPagar;
+    @Column(name = "totalPagar", nullable = false)
+    private Double totalPagar;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sala_id", nullable = false)
+    private Sala sala;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
 }

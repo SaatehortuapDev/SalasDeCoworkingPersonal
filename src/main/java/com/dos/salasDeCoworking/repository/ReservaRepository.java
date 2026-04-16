@@ -1,17 +1,24 @@
 package com.dos.salasDeCoworking.repository;
 
-import com.example.demo_basic.model.entity.Reserva;
-import com.example.demo_basic.model.enums.EstadoReserva;
+import com.dos.salasDeCoworking.model.entity.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Repository
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
-    long countByUsuarioIdAndEstado(Long Id, EstadoReserva estado);
 
     List<Reserva> findByUsuarioId(Long usuarioId);
 
-    List<Reserva> findByEstado(EstadoReserva estado);
+    List<Reserva> findBySalaId(Long salaId);
+
+    boolean existsBySalaIdAndFechaAndHoraInicioBeforeAndHoraFinAfter(
+        Long salaId,
+        LocalDate fecha,
+        LocalTime finSolicitado,
+        LocalTime inicioSolicitado
+    );
 }

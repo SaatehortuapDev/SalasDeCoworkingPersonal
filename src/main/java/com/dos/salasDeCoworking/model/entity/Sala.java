@@ -1,6 +1,7 @@
 package com.dos.salasDeCoworking.model.entity;
 
 import com.dos.salasDeCoworking.model.enums.CapacidadSala;
+import com.dos.salasDeCoworking.model.enums.EstadoSala;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,10 +25,14 @@ public class Sala extends BaseEntity {
     private String nombre;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "capacidad", nullable = false, length = 20)
+    @Column(name = "capacidad", nullable = false)
     private CapacidadSala capacidad;
 
     @Column(name = "precioHora", nullable = false)
     private Double precioHora;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadoSala estado;
 
 }

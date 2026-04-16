@@ -1,7 +1,8 @@
-package com.dos.salasDeCoworking.service;
+package com.dos.salasDeCoworking.services;
 
-import com.example.demo_basic.model.entity.Usuario;
-import com.example.demo_basic.repository.usuarioRepository;
+
+import com.dos.salasDeCoworking.model.entity.Usuario;
+import com.dos.salasDeCoworking.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,17 +25,15 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario save(usuario request) {
+    public Usuario save(Usuario request) {
         return usuarioRepository.save(request);
     }
 
     @Transactional
     public Usuario update(Long id, Usuario request) {
         Usuario usuario = findEntity(id);
-        usuario.setNombre(request.getNombre());
-        usuario.setIdentificacion(request.getIdentificacion());
-        usuario.setEdad(request.getEdad());
-        usuario.setTienePatio(request.getTienePatio());
+        usuario.setEmail(request.getEmail());
+        usuario.setEsPremium(request.getEsPremium());
         return usuarioRepository.save(usuario);
     }
 

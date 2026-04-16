@@ -1,7 +1,7 @@
-package com.dos.salasDeCoworking.service;
+package com.dos.salasDeCoworking.services;
 
-import com.example.demo_basic.model.entity.Sala;
-import com.example.demo_basic.repository.SalaRepository;
+import com.dos.salasDeCoworking.model.entity.Sala;
+import com.dos.salasDeCoworking.repository.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,9 +32,8 @@ public class SalaService {
     public Sala update(Long id, Sala request) {
         Sala sala = findEntity(id);
         sala.setNombre(request.getNombre());
-        sala.setEspecie(request.getEspecie());
-        sala.setEdad(request.getEdad());
-        sala.setTamano(request.getTamano());
+        sala.setCapacidad(request.getCapacidad());
+        sala.setPrecioHora(request.getPrecioHora());
         sala.setEstado(request.getEstado());
         return salaRepository.save(sala);
     }
@@ -45,8 +44,10 @@ public class SalaService {
         salaRepository.deleteById(id);
     }
 
-    public sala findEntity(Long id) {
+    public Sala findEntity(Long id) {
         return salaRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("sala no encontrada con id: " + id));
     }
 }
+
+
