@@ -7,7 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime;  
 
 /**
  * Clase base para todas las entidades del sistema.
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  *   - @LastModifiedDate → actualiza la fecha en cada modificación (UPDATE).
  * Requiere @EnableJpaAuditing en la clase principal de la aplicación.
  */
-@MappedSuperclass
+@MappedSuperclass  
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
